@@ -4,40 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chameleon (CHML)</title>
-    <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+
+    <!-- Подключение favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Стили -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 100, 0.5);
+        }
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .social-links a {
+            margin: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- Скрипт для отображения времени -->
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('current-time').textContent = timeString;
+        }
+        setInterval(updateTime, 1000);
+    </script>
 </head>
 <body>
-    <header>
+    <div class="container">
         <h1>Welcome to Chameleon (CHML)!</h1>
         <p>The most adaptive meme coin on Polygon!</p>
-        <div id="time"></div>
-    </header>
-    
-    <section class="about">
+
         <h2>About CHML</h2>
         <p>Chameleon (CHML) is a meme coin that changes trends as fast as a chameleon changes colors!</p>
-    </section>
 
-    <section class="buy">
         <h2>Buy CHML</h2>
-        <a href="https://quickswap.exchange/#/swap?outputCurrency=YOUR_TOKEN_ADDRESS" class="buy-btn">Buy on QuickSwap</a>
-    </section>
+        <a class="button" href="https://quickswap.exchange/#/swap?outputCurrency=YOUR_TOKEN_ADDRESS" target="_blank">Buy on QuickSwap</a>
 
-    <section class="price">
         <h2>Current Price</h2>
-        <p id="price">Loading...</p>
-    </section>
+        <p class="price" id="token-price">Loading...</p>
 
-    <section class="community">
+        <h2>Current Time</h2>
+        <p id="current-time">Loading...</p>
+
         <h2>Join the Community</h2>
-        <a href="https://twitter.com/Chamele0nArmy" class="social twitter">Twitter</a>
-        <a href="https://t.me/YOUR_TELEGRAM_LINK" class="social telegram">Telegram</a>
-    </section>
+        <div class="social-links">
+            <a href="https://twitter.com/Chamele0nArmy" target="_blank">Twitter</a>
+            <a href="https://t.me/YOUR_TELEGRAM" target="_blank">Telegram</a>
+        </div>
 
-    <footer>
-        <p>© 2025 Chameleon Army. All rights reserved.</p>
-    </footer>
+        <p>&copy; 2025 Chameleon Army. All rights reserved.</p>
+    </div>
+
+    <!-- Скрипт для получения цены токена -->
+    <script>
+        async function fetchPrice() {
+            try {
+                const response = await fetch("https://api.dexscreener.com/latest/dex/pairs/polygon/YOUR_TOKEN_PAIR");
+                const data = await response.json();
+                const price = data.pairs[0].priceUsd;
+                document.getElementById("token-price").textContent = "$" + parseFloat(price).toFixed(6);
+            } catch (error) {
+                document.getElementById("token-price").textContent = "Error fetching price";
+            }
+        }
+        fetchPrice();
+        setInterval(fetchPrice, 60000);
+    </script>
 </body>
 </html>
