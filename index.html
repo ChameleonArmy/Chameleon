@@ -6,10 +6,10 @@
     <title>Chameleon (CHML)</title>
 
     <!-- Подключение favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
 
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="style.css">
@@ -38,6 +38,10 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 255, 100, 0.5);
         }
+        .logo {
+            width: 200px;
+            margin-bottom: 20px;
+        }
         .button {
             display: inline-block;
             margin-top: 10px;
@@ -52,11 +56,6 @@
         .button:hover {
             background-color: #45a049;
         }
-        .price {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
         .social-links a {
             margin: 10px;
             text-decoration: none;
@@ -64,19 +63,10 @@
             font-weight: bold;
         }
     </style>
-
-    <!-- Скрипт для отображения времени -->
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            document.getElementById('current-time').textContent = timeString;
-        }
-        setInterval(updateTime, 1000);
-    </script>
 </head>
 <body>
     <div class="container">
+        <img src="logo.png" alt="Chameleon Logo" class="logo">
         <h1>Welcome to Chameleon (CHML)!</h1>
         <p>The most adaptive meme coin on Polygon!</p>
 
@@ -84,37 +74,15 @@
         <p>Chameleon (CHML) is a meme coin that changes trends as fast as a chameleon changes colors!</p>
 
         <h2>Buy CHML</h2>
-        <a class="button" href="https://quickswap.exchange/#/swap?outputCurrency=YOUR_TOKEN_ADDRESS" target="_blank">Buy on QuickSwap</a>
-
-        <h2>Current Price</h2>
-        <p class="price" id="token-price">Loading...</p>
-
-        <h2>Current Time</h2>
-        <p id="current-time">Loading...</p>
+        <a class="button" href="https://app.uniswap.org/#/swap?outputCurrency=0x2869cAc3bCAD26658Cd2174ABf3f18A5De61117E" target="_blank">Buy on Uniswap</a>
 
         <h2>Join the Community</h2>
         <div class="social-links">
             <a href="https://twitter.com/Chamele0nArmy" target="_blank">Twitter</a>
-            <a href="https://t.me/YOUR_TELEGRAM" target="_blank">Telegram</a>
+            <a href="https://t.me/ChameleonArmy" target="_blank">Telegram</a>
         </div>
 
         <p>&copy; 2025 Chameleon Army. All rights reserved.</p>
     </div>
-
-    <!-- Скрипт для получения цены токена -->
-    <script>
-        async function fetchPrice() {
-            try {
-                const response = await fetch("https://api.dexscreener.com/latest/dex/pairs/polygon/YOUR_TOKEN_PAIR");
-                const data = await response.json();
-                const price = data.pairs[0].priceUsd;
-                document.getElementById("token-price").textContent = "$" + parseFloat(price).toFixed(6);
-            } catch (error) {
-                document.getElementById("token-price").textContent = "Error fetching price";
-            }
-        }
-        fetchPrice();
-        setInterval(fetchPrice, 60000);
-    </script>
 </body>
 </html>
