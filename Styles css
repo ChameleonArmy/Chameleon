@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #4CAF50, #2E7D32);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    font-size: 24px;
+}
+
+#time {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.buy-btn {
+    display: inline-block;
+    padding: 15px 25px;
+    background: gold;
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.social {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.twitter { background: #1DA1F2; }
+.telegram { background: #0088CC; }
+
+footer {
+    margin-top: 30px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+}
